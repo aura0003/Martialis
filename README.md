@@ -1,5 +1,5 @@
 
-# **Marcus Valerius Martialis**
+# **Marcus Valerius Martialis "Martialis"**
 Marcus Valerius Martialis, "Martialis" is a Optical character recognition discord bot running on Google's Tesseract OCR Engine.
 
 If you plan to modify this bot **have to**:
