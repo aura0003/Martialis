@@ -18,7 +18,9 @@ tokenr = open("token.token", "r")
 token = tokenr.read()
 
 # Setting Prefix
-client = commands.Bot(command_prefix = '') # Command Prefix
+intents = discord.Intents.all()
+client = commands.Bot(command_prefix = '', intents=intents) # Command Prefix
+
 
 # When Bot is ready!
 @client.event
