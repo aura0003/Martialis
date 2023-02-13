@@ -33,15 +33,29 @@ async def ocr(ctx, *, message : str):
     
     url = message
         
-     # Read image from which text needs to be extracted
+    # Read image from URL
     req = Request(
-        url=message, 
+        url = 'https://cdn.discordapp.com/attachments/1074390415618359459/1074514708213792899/image.png',
         headers={'User-Agent': 'Mozilla/5.0'}
     )
 
     wp = urlopen(req)
     arr = np.asarray(bytearray(wp.read()), dtype=np.uint8)
     img = cv2.imdecode(arr, -1) # 'Load it as it is'
+    
+    # Remove alpha channel
+    a,b,g,r = cv2.split(img)
+    img = cv2.merge((r,g,b))
+
+    # EDSR Super Resolution Upscaling
+    sr = cv2.dnn_superres.DnnSuperResImpl_create()
+    path = "EDSR_x4.pb"
+    sr.readModel(path)
+    sr.setModel("edsr",4)
+    result = sr.upsample(img)
+
+    # Resized image
+    img = cv2.resize(img,dsize=None,fx=4,fy=4)
 
     # Convert to grayscale and apply Gaussian filtering
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
@@ -53,12 +67,14 @@ async def ocr(ctx, *, message : str):
     img = cv2.erode(gray, kernel, iterations=1)
     img = cv2.dilate(img, kernel, iterations=1)
 
+    # Upscale and blur image
+    img = cv2.pyrUp(img)
+
     # Print extracted text
     out_below = pt.image_to_string(img)
                     
     # Send Image
     await ctx.send('```' + out_below + '```')
-
                     
 # Run
 client.run(token)
