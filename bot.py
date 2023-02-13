@@ -12,7 +12,7 @@ import numpy as np
 import numpy as np
 from urllib.request import Request, urlopen
 import cv2
-
+import time
 
 tokenr = open("token.token", "r")
 token = tokenr.read()
@@ -31,11 +31,16 @@ async def on_ready():
 @client.command()
 async def ocr(ctx, *, message : str):
     
+    # Starting Command Message
+    inittime = time.time()
+    strinittime = str(inittime)
+    print("Starting " + strinittime)
+    
     url = message
         
     # Read image from URL
     req = Request(
-        url = 'https://cdn.discordapp.com/attachments/1074390415618359459/1074514708213792899/image.png',
+        url = url,
         headers={'User-Agent': 'Mozilla/5.0'}
     )
 
@@ -75,6 +80,15 @@ async def ocr(ctx, *, message : str):
                     
     # Send Image
     await ctx.send('```' + out_below + '```')
+    
+    endtime = time.time()
+    strendtime = str(endtime)
+    print("Finished " + strendtime)
+    
+    timetaken = endtime - inittime
+    strtimetaken = str(timetaken)
+    print(strtimetaken)
+    await ctx.send('That took ' + strtimetaken + " seconds to complete!")
                     
 # Run
 client.run(token)
