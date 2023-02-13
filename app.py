@@ -7,7 +7,7 @@ import cv2
 
 # Read image from which text needs to be extracted
 req = Request(
-    url='https://i.imgur.com/GWLHm5b.jpeg', 
+    url = 'https://cdn.discordapp.com/attachments/1074390415618359459/1074514708213792899/image.png',
     headers={'User-Agent': 'Mozilla/5.0'}
 )
 
@@ -15,7 +15,8 @@ wp = urlopen(req)
 arr = np.asarray(bytearray(wp.read()), dtype=np.uint8)
 img = cv2.imdecode(arr, -1) # 'Load it as it is'
 
-#img = cv2.imread(imgfw)
+# Upscale and blur image
+img = cv2.pyrUp(img)
 
 # Convert to grayscale and apply Gaussian filtering
 gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
@@ -26,7 +27,6 @@ gray = cv2.bitwise_not(img_bin)
 kernel = np.ones((2, 1), np.uint8)
 img = cv2.erode(gray, kernel, iterations=1)
 img = cv2.dilate(img, kernel, iterations=1)
-
 # Print extracted text
 out_below = pt.image_to_string(img)
 print("OUTPUT:", out_below)
