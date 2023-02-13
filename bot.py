@@ -57,7 +57,7 @@ async def ocr(ctx, *, message : str):
     out_below = pt.image_to_string(img)
                     
     # Send Image
-    await ctx.send(out_below)
+    await ctx.send('```' + out_below + '```')
 
                     
 # Run
