@@ -51,13 +51,14 @@ async def ocr(ctx, *, message : str):
     # Remove alpha channel
     a,b,g,r = cv2.split(img)
     img = cv2.merge((r,g,b))
-
+"""
     # EDSR Super Resolution Upscaling
     sr = cv2.dnn_superres.DnnSuperResImpl_create()
     path = "EDSR_x4.pb"
     sr.readModel(path)
     sr.setModel("edsr",4)
     result = sr.upsample(img)
+"""
 
     # Resized image
     img = cv2.resize(img,dsize=None,fx=4,fy=4)
