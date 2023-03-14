@@ -60,6 +60,7 @@ python3 bot.py
 ```
 
 > **Note** You may need to replace `python` with `py`, `python3`, `python3.11`, etc. depending on what Python versions you have installed on the machine.
+
 > **Note** The file `app.py` is the EDSR staging file, no need to run or fiddle with it unless you want to understand the EDSR Super Res code.
 
 ## Built With
