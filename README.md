@@ -53,6 +53,10 @@ Before running the bot you will need to install all the requirements with this c
 pip3 install -r requirements.txt
 ```
 
+```
+pip3 install opencv-contrib-python
+```
+
 After that you can start it with
 
 ```

@@ -31,10 +31,12 @@ async def on_ready():
 @client.command()
 async def ocr(ctx, *, message : str):
     
-    # Starting Command Message
+    """
+    # Starting Command Message [FOR TESTING]
     inittime = time.time()
     strinittime = str(inittime)
     print("Starting " + strinittime)
+    """
     
     url = message
         
@@ -51,17 +53,16 @@ async def ocr(ctx, *, message : str):
     # Remove alpha channel
     a,b,g,r = cv2.split(img)
     img = cv2.merge((r,g,b))
-"""
+
     # EDSR Super Resolution Upscaling
     sr = cv2.dnn_superres.DnnSuperResImpl_create()
     path = "EDSR_x4.pb"
     sr.readModel(path)
     sr.setModel("edsr",4)
     result = sr.upsample(img)
-"""
 
     # Resized image
-    img = cv2.resize(img,dsize=None,fx=4,fy=4)
+    img = cv2.resize(result,dsize=None,fx=4,fy=4)
 
     # Convert to grayscale and apply Gaussian filtering
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
@@ -79,9 +80,12 @@ async def ocr(ctx, *, message : str):
     # Print extracted text
     out_below = pt.image_to_string(img)
                     
-    # Send Image
+    # Send Response
     await ctx.send('```' + out_below + '```')
+    print(out_below)
     
+    # Ending Command Message [FOR TESTING]
+    """
     endtime = time.time()
     strendtime = str(endtime)
     print("Finished " + strendtime)
@@ -90,6 +94,7 @@ async def ocr(ctx, *, message : str):
     strtimetaken = str(timetaken)
     print(strtimetaken)
     await ctx.send('That took ' + strtimetaken + " seconds to complete!")
+    """
                     
 # Run
 client.run(token)
