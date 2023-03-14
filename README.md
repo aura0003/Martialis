@@ -29,7 +29,7 @@ intents =  discord.Intents.all()
 client =  commands.Bot(command_prefix  =  '',  intents=intents)  # Command Prefix
 ```
 
-Please do not open issues or pull requests about things that are written in the [TODO file](TODO.md), they are **already** under work for a future version of the template.
+Please do not open issues or pull requests about things that are written in the [TODO file](TODO.md), they are **already** under work for future versions
 
 ## How to download it
 * Clone/Download the repository
