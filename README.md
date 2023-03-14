@@ -29,7 +29,7 @@ intents =  discord.Intents.all()
 client =  commands.Bot(command_prefix  =  '',  intents=intents)  # Command Prefix
 ```
 
-Please do not open issues or pull requests about things that are written in the [TODO file](TODO.md), they are **already** under work for a future version of the template.
+Please do not open issues or pull requests about things that are written in the [TODO file](TODO.md), they are **already** under work for future versions
 
 ## How to download it
 * Clone/Download the repository
@@ -61,6 +61,7 @@ python3 bot.py
 
 > **Note** You may need to replace `python` with `py`, `python3`, `python3.11`, etc. depending on what Python versions you have installed on the machine.
 
+> **Note** The file `app.py` is the EDSR staging file, no need to run or fiddle with it unless you want to understand the EDSR Super Res code.
 
 ## Built With
 * [Python 3.10.5](https://www.python.org/)
