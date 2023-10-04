@@ -3,5 +3,5 @@ async_timeout==4.0.2
 discord.py==2.1.1
 numpy==1.23.2
 opencv_python==4.7.0.68
-Pillow==9.4.0
+Pillow==10.0.1
 pytesseract==0.3.10
