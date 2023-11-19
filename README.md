@@ -13,7 +13,7 @@ If you plan to modify this bot **have to**:
 Before requesting support, you should know that this bot requires you to have at least a **basic knowledge** of
 Python, Google's OCR Engine (Tesseract), and the libraries involved. Do not use the bot or attempt to modify it if you don't know the basics. [Here's](https://pythondiscord.com/pages/resources) a link for resources to learn python.
 
-If you need some help for something, do not hesitate to contact me on discord @ Aura#0003
+If you need some help for something, do not hesitate to contact me on discord @aura0003
 
 ## Disclaimer
 
